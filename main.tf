@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "rg-basic" {
 }
 
 resource "azurerm_storage_account" "st-basic" {
-  name                     = "storageacct${lookup(var.project_name, var.env)}"
+  name                     = "storageacct${random_id.rnd.hex}${lookup(var.project_name, var.env)}"
   resource_group_name      = azurerm_resource_group.rg-basic.name
   location                 = azurerm_resource_group.rg-basic.location
   account_tier             = "Standard"
