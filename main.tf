@@ -47,9 +47,9 @@ resource "azurerm_function_app" "functionapp" {
   storage_account_name      = azurerm_storage_account.st-basic.name
   storage_account_access_key = azurerm_storage_account.st-basic.primary_access_key
   os_type = "linux"
-  version                   = "14 LTS"
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "",
+    "WEBSITE_RUN_FROM_PACKAGE" = "1",
+    "WEBSITE_NODE_DEFAULT_VERSION" = "~14"
     "FUNCTIONS_WORKER_RUNTIME" = "node",
     "FUNCTIONS_EXTENSION_VERSION" = "~3",
   }
