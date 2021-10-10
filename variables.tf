@@ -14,8 +14,12 @@ variable "prefix" {
 
 variable "location" {
   description = "The Azure Region in which all resources in this example should be created."
+  type = string
+  default = "UK South"
 }
 
 variable "env" {
   description = "env: dev or prod"
+  type = string
+  default = "dev"
 }
