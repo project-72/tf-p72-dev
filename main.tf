@@ -53,7 +53,7 @@ resource "azurerm_function_app" "functionapp" {
     "FUNCTIONS_WORKER_RUNTIME" = "node"
   }
   site_config = {
-#    linux_fx_version = "node|14",      # according to docs, can't set this unless svc plan incl linux (not the current "FunctionApp")
-    "app_scale_limit" = 10              # arbitrary to stop costs
+    linux_fx_version = "node|14",      # according to docs, can't set this unless svc plan incl linux (not the current "FunctionApp")
+    "app_scale_limit" = "10"              # arbitrary to stop costs
   }
 }
