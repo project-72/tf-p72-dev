@@ -54,7 +54,6 @@ resource "azurerm_function_app" "functionapp" {
   storage_account_name      = azurerm_storage_account.st-basic.name
   storage_account_access_key = azurerm_storage_account.st-basic.primary_access_key
   version                   = "~3"
-  kind                      = "functionapp"
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = "",
     "FUNCTIONS_WORKER_RUNTIME" = "node",
