@@ -1,8 +1,8 @@
-output "instance_ami" {
-  value = aws_instance.ubuntu.ami
+output "rg_basic" {
+  value = azure_resource_group.rg-basic.name
 }
 
-output "instance_arn" {
-  value = aws_instance.ubuntu.arn
+output "rg_storage" {
+  value = azure_resource_group.st-basic.name
 }
 
