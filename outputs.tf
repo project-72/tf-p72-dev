@@ -3,6 +3,5 @@ output "rg_basic" {
 }
 
 output "rg_storage" {
-  value = azure_resource_group.st-basic.name
+  value = azure_storage_account.st-basic.name
 }
-
