@@ -47,7 +47,7 @@ resource "azurerm_function_app" "functionapp" {
   storage_account_name      = azurerm_storage_account.st-basic.name
   storage_account_access_key = azurerm_storage_account.st-basic.primary_access_key
 #  os_type = "linux"                     # according to docs, can't set this unless svc plan incl linux (not the current "FunctionApp")
-  app_settings {
+  app_settings = {
     WEBSITE_RUN_FROM_PACKAGE = ""
     WEBSITE_NODE_DEFAULT_VERSION = "~14"
     FUNCTIONS_WORKER_RUNTIME = "node"
