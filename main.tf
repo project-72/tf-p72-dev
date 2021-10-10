@@ -18,7 +18,7 @@ resource "random_id" "rnd" {
   byte_length = 2
 }
 
-resource "azurerm_resource_group" "rg-${var.prefix}basics-${random_id.rnd}-${lookup(var.project_name, var.env)}" {
+resource "azurerm_resource_group" "rg-basic" {
   name     = "${var.prefix}-rg-basics-${lookup(var.project_name, var.env)}"
   location = "${var.location}"
 }
