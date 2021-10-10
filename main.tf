@@ -1,28 +1,21 @@
-provider "aws" {
-  region = var.region
+provider "azurerm" {
+  features {}
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
+resource "azurerm_resource_group" "example" {
+  name     = "${var.prefix}-resources"
+  location = "${var.location}"
 }
 
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+resource "azurerm_storage_account" "example" {
+  name                     = "${var.prefix}storageacct"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 
-  tags = {
-    Name = var.instance_name
+  network_rules {
+    default_action = "Deny"
+    ip_rules       = ["23.45.1.0/30"]
   }
 }
