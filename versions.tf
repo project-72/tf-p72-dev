@@ -8,14 +8,6 @@ terraform {
       source  = "hashicorp/random"
       version = "3.0.0"
     }
-    backend "remote" {
-      organization = "project72"
-
-      workspaces {
-        name = "tf-p72-dev"
-      }
-    }
-
   }
 
   required_version = ">= 0.14.0"
