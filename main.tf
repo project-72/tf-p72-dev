@@ -10,12 +10,12 @@ resource "random_id" "rnd" {
 }
 
 resource "azurerm_resource_group" "rg-basic" {
-  name     = "rg-basics-${lookup(var.project_name, var.env)}"
+  name     = "${var.prefix}rg-basics-${lookup(var.project_name, var.env)}"
   location = "${var.location}"
 }
 
 resource "azurerm_storage_account" "st-basic" {
-  name                     = "storageacct${random_id.rnd.hex}${lookup(var.project_name, var.env)}"
+  name                     = "${var.prefix}storageacct${random_id.rnd.hex}${lookup(var.project_name, var.env)}"
   resource_group_name      = azurerm_resource_group.rg-basic.name
   location                 = azurerm_resource_group.rg-basic.location
   account_tier             = "Standard"
