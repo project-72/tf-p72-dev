@@ -1,15 +1,18 @@
-variable "region" {
-  description = "AWS region"
-  default     = "us-west-1"
+
+variable "project_name" {
+  type        = map
+  description = "Name of the project."
+  default     = {
+    dev  = "p72-dev"
+    prod = "p72-prod"
+  }
 }
 
-variable "instance_type" {
-  description = "Type of EC2 instance to provision"
-  default     = "t2.micro"
+variable "location" {
+    description = "Azure region"
+
 }
 
-variable "instance_name" {
-  description = "EC2 instance name"
-  default     = "Provisioned by Terraform"
+variable "env" {
+  description = "env: dev or prod"
 }
-
