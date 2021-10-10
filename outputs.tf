@@ -11,10 +11,10 @@ output "st_storage" {
 }
 
 output "app_svc_plan" {
-  value = azurerm.appsvcplan.name
+  value = azurerm_app_service_plan.appsvcplan.name
 }
 
 output "function_app" {
-  value = azurerm_functionapp.name
+  value = azurerm_function_app.functionapp.name
 }
 
