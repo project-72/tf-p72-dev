@@ -3,8 +3,8 @@ variable "project_name" {
   type        = map
   description = "Name of the project."
   default     = {
-    dev  = "p72-dev"
-    prod = "p72-prod"
+    dev  = "p72dev"
+    prod = "p72prod"
   }
 }
 
