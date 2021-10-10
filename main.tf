@@ -60,8 +60,5 @@ resource "azurerm_function_app" "functionapp" {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.appinsights.instrumentation_key,
   }
   os_type = "linux"
-  site_config {
-    linux_fx_version          = "node|14"
-    use_32_bit_worker_process = false
-  }
+
 }
