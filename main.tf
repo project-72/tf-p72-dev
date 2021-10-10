@@ -48,9 +48,12 @@ resource "azurerm_function_app" "functionapp" {
   storage_account_access_key = azurerm_storage_account.st-basic.primary_access_key
   os_type = "linux"
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "1",
+    "WEBSITE_RUN_FROM_PACKAGE" = "",
     "WEBSITE_NODE_DEFAULT_VERSION" = "~14"
-    "FUNCTIONS_WORKER_RUNTIME" = "node",
-    "FUNCTIONS_EXTENSION_VERSION" = "~3",
+    "FUNCTIONS_WORKER_RUNTIME" = "node"
+  }
+  site_config = {
+#    linux_fx_version = "node|14",      # according to docs, can't set this unless svc plan incl linux (not the current "FunctionApp")
+    app_scale_limit = 10                # arbitrary to stop costs
   }
 }
