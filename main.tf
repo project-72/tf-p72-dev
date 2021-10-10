@@ -13,13 +13,18 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example-rg" {
-  name     = "${var.prefix}-rg"
+# Create a random id
+resource "random_id" "rnd" {
+  byte_length = 2
+}
+
+resource "azurerm_resource_group" "rg-${var.prefix}basics-${random_id.rnd}-${lookup(var.project_name, var.env)}" {
+  name     = "${var.prefix}-rg-basics-${lookup(var.project_name, var.env)}"
   location = "${var.location}"
 }
 
-resource "azurerm_storage_account" "example" {
-  name                     = "${var.prefix}storageacct"
+resource "azurerm_storage_account" "st-basic" {
+  name                     = "st${var.prefix}storageacct-${random_id.rnd}${lookup(var.project_name, var.env)}"
   resource_group_name      = azurerm_resource_group.example-rg.name
   location                 = azurerm_resource_group.example-rg.location
   account_tier             = "Standard"
