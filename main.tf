@@ -32,7 +32,7 @@ resource "azurerm_app_service_plan" "appsvcplan" {
   resource_group_name = azurerm_resource_group.rg-basic.name
   location            = azurerm_resource_group.rg-basic.location
   kind                = "FunctionApp"
-  reserved              false   # would you belive true = linux and false = win... use win as we can't publish zip packages to az storage with linux consumption
+  reserved            = false   # would you belive true = linux and false = win... use win as we can't publish zip packages to az storage with linux consumption
   sku {
     tier = "Dynamic"
     size = "Y1"
