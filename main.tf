@@ -32,7 +32,7 @@ resource "azurerm_app_service_plan" "appsvcplan" {
   resource_group_name = azurerm_resource_group.rg-basic.name
   location            = azurerm_resource_group.rg-basic.location
   kind                = "FunctionApp"
-
+  reserved              false   # would you belive true = linux and false = win... use win as we can't use XXX with linux
   sku {
     tier = "Dynamic"
     size = "Y1"
@@ -51,6 +51,7 @@ resource "azurerm_function_app" "functionapp" {
 #    WEBSITE_RUN_FROM_PACKAGE = ""
 #    WEBSITE_NODE_DEFAULT_VERSION = "~14"
 #    FUNCTIONS_WORKER_RUNTIME = "node"
+#  FUNCTIONS_EXTENSION_VERSION = "~4"   # 
 #  }
 #  site_config {
  #   linux_fx_version = "node|14"       # according to docs, can't set this unless svc plan incl linux (not the current "FunctionApp")
