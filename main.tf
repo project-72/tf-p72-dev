@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "st-basic" {
   account_replication_type = "LRS"
 
   network_rules {
-    default_action = "Deny"
+ #   default_action = "Deny"
     ip_rules       = ["23.45.1.0/30"]
   }
 }
